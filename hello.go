@@ -1,25 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	fmt.Println(twoSum([]int{-1,-2,-3,-4,-5}, -8))
+	fmt.Println(twoSum([]int{3,2,4}, 6))
 }
 
 func twoSum(nums []int, target int) []int {
-    i:= 0
-	j:= len(nums)-1
-	
-		for nums[i] +  nums[j] != target{
-			fmt.Print(nums[i] ,  nums[j])
-			if(nums[i]+ nums[j]>target){
-				j-- ;
-	
-			}else if(nums[i]+ nums[j]<target){
-				i++ ;
+	var tmpNums []int
+	i := 0
+	j := i + 1
+	for i < len(nums) {
+		for j < len(nums) {
+			if nums[i]+nums[j] == target {
+
+				tmpNums = []int{i, j}
 			}
+			j++
 		}
-		return []int{i,j};
-	
-	
+		i++
+		j = i + 1
+	}
+	return tmpNums
+
 }
